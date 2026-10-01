@@ -16,3 +16,29 @@ spring:
               uri: lb://order-service
               predicates:
                 - Path=/api/orders/**
+
+            - id: product-openapi
+              uri: lb://product-service
+              predicates:
+                - Path=/openapi/products
+              filters:
+                - SetPath=/v3/api-docs
+                - PreserveHostHeader
+
+            - id: order-openapi
+              uri: lb://order-service
+              predicates:
+                - Path=/openapi/orders
+              filters:
+                - SetPath=/v3/api-docs
+                - PreserveHostHeader
+
+springdoc:
+  swagger-ui:
+    disable-swagger-default-url: true
+    urls:
+      - name: Products
+        url: /openapi/products
+      - name: Orders
+        url: /openapi/orders
+    urls-primary-name: Products
