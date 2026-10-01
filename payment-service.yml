@@ -24,8 +24,8 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
 
       properties:
-        "[spring.json.trusted.packages]": "com.ecomm.payment_service.event"
-        "[spring.json.type.mapping]": "order-created:com.ecomm.payment_service.event.OrderCreatedEvent"
+        "[spring.json.use.type.headers]": false
+        "[spring.json.value.default.type]": "com.ecomm.payment_service.event.OrderCreatedEvent"
 
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
