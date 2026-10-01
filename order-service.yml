@@ -21,3 +21,14 @@ spring:
 
       value-serializer:
         org.springframework.kafka.support.serializer.JsonSerializer
+  
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+
+      client:
+        config:
+          product-service:
+            connect-timeout: 2000
+            read-timeout: 3000
