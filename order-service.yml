@@ -25,6 +25,17 @@ spring:
       properties:
         "[spring.json.type.mapping]": "order-created:com.ecomm.order_service.event.OrderCreatedEvent"
 
+    consumer:
+      group-id: order-service
+      auto-offset-reset: earliest
+
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JacksonJsonDeserializer
+
+      properties:
+        "[spring.json.trusted.packages]": "com.ecomm.order_service.event"
+        "[spring.json.type.mapping]": "payment-completed:com.ecomm.order_service.event.PaymentCompletedEvent,payment-failed:com.ecomm.order_service.event.PaymentFailedEvent"
+
   cloud:
     openfeign:
       circuitbreaker:

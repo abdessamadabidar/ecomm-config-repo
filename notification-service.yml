@@ -14,6 +14,5 @@ spring:
         org.springframework.kafka.support.serializer.JacksonJsonDeserializer
 
       properties:
-        spring.json.trusted.packages: "*"
-        spring.json.use.type.headers: false
-        spring.json.value.default.type: com.ecomm.notification_service.event.OrderCreatedEvent
+        "[spring.json.trusted.packages]": "com.ecomm.notification_service.event"
+        "[spring.json.type.mapping]": "order-created:com.ecomm.notification_service.event.OrderCreatedEvent,payment-completed:com.ecomm.notification_service.event.PaymentCompletedEvent,payment-failed:com.ecomm.notification_service.event.PaymentFailedEvent"
