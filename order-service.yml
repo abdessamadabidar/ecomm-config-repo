@@ -22,6 +22,9 @@ spring:
       value-serializer:
         org.springframework.kafka.support.serializer.JsonSerializer
 
+      properties:
+        "[spring.json.type.mapping]": "order-created:com.ecomm.order_service.event.OrderCreatedEvent"
+
   cloud:
     openfeign:
       circuitbreaker:
